@@ -20,8 +20,8 @@ public class PlanetTerrain : MonoBehaviour
 {
     private static ComputeShader computeShader;
     private MeshFilter meshFilter;
-    private MeshRenderer meshRenderer;
 
+    [Min(0)]
     public int Subdivisions;
     public float Radius;
 
@@ -100,7 +100,6 @@ public class PlanetTerrain : MonoBehaviour
         PlanetTerrain.LoadStaticResources();
         // Gets a reference for the mesh filter and renderer
         meshFilter = (MeshFilter) gameObject.GetComponent<MeshFilter>();
-        meshRenderer = (MeshRenderer) gameObject.GetComponent<MeshRenderer>();
 
         GenerateTerrain();
 

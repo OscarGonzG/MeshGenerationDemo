@@ -1,6 +1,5 @@
 #include "NoisyNodes/ClassicNoise3D.hlsl"
 #include "NoisyNodes/Voronoi3D.hlsl"
-#include "AnimationCurves.hlsl"
 
 #pragma kernel GeneratePlanet
 
