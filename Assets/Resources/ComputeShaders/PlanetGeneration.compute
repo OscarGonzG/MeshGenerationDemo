@@ -10,7 +10,7 @@ struct PerlinNoiseSettings
 {
     float amplitude;
     float frequency;
-    float persistance;
+    float persistence;
     float lacunarity;
     int octaves;
 };
@@ -26,7 +26,7 @@ float3 NoiseOffset;
 // Noise settings
 RWStructuredBuffer<PerlinNoiseSettings> PerlinSettings;
 
-float PerlinNoise(float3 pos, float3 offset, float amplitude, float frequency, float persistance, float lacunarity, int octaves);
+float PerlinNoise(float3 pos, float3 offset, float amplitude, float frequency, float persistence, float lacunarity, int octaves);
 
 
 [numthreads(64,1,1)]
@@ -44,14 +44,14 @@ void GeneratePlanet (uint3 id : SV_DispatchThreadID)
     float terrainHeight = PlanetRadius;
     float warpingNoise = PlanetRadius * PerlinNoise(pos, NoiseOffset, PerlinSettings[WarpingNoise].amplitude,
                                                        PerlinSettings[WarpingNoise].frequency,
-                                                       PerlinSettings[WarpingNoise].persistance,
+                                                       PerlinSettings[WarpingNoise].persistence,
                                                        PerlinSettings[WarpingNoise].lacunarity,
                                                        PerlinSettings[WarpingNoise].octaves);
     
     // Mountain scale noise
     float mountainNoise = PlanetRadius * PerlinNoise(pos + warpingNoise, NoiseOffset, PerlinSettings[MountainNoise].amplitude,
                                                        PerlinSettings[MountainNoise].frequency,
-                                                       PerlinSettings[MountainNoise].persistance,
+                                                       PerlinSettings[MountainNoise].persistence,
                                                        PerlinSettings[MountainNoise].lacunarity,
                                                        PerlinSettings[MountainNoise].octaves);
     mountainNoise = abs(mountainNoise);
@@ -62,14 +62,14 @@ void GeneratePlanet (uint3 id : SV_DispatchThreadID)
 }
 
 
-float PerlinNoise(float3 pos, float3 offset, float amplitude, float frequency, float persistance, float lacunarity, int octaves)
+float PerlinNoise(float3 pos, float3 offset, float amplitude, float frequency, float persistence, float lacunarity, int octaves)
 {
     
     float noiseValue = 0;
     for (int i = 0; i < octaves; i++)
     {
         noiseValue += amplitude * PerlinNoise3D_float(frequency * pos + offset);
-        amplitude *= persistance;
+        amplitude *= persistence;
         frequency *= lacunarity;
     }
     

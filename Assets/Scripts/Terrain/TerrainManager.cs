@@ -15,7 +15,7 @@ public class TerrainManager : MonoBehaviour
     [Min (1)]
     public int ChunkHeight;
     public int Seed;
-    public SimpleNoiseSettings NoiseSettings;
+    public SimpleNoiseSettings TerrainNoise;
 
     public GameObject ChunkPrefab;
 

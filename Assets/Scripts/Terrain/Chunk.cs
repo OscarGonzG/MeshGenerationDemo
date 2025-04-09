@@ -26,7 +26,7 @@ public class Chunk : MonoBehaviour
         Vector2 origin = new Vector2(gameObject.transform.position.x, gameObject.transform.position.z);
         float[,] heightMap = NoiseMap.NoiseMap2D(terrainMgr.ChunkWidth, terrainMgr.ChunkWidth,
                                                  terrainMgr.ChunkHeight / 3, terrainMgr.Seed,
-                                                 terrainMgr.NoiseSettings, origin);
+                                                 terrainMgr.TerrainNoise, origin);
         float[,,] scalarField = NoiseMap.HeightMapTo3D(heightMap, terrainMgr.ChunkHeight, TERRAIN_VALUE, AIR_VALUE);
         Mesh mesh = MarchingCubes.GenerateMesh(scalarField, ISOLEVEL);
 

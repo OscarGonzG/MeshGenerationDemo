@@ -10,7 +10,7 @@ public struct SimpleNoiseSettings
     public float amplitude;
     public float frequency;
     [Range(0, 1)]
-    public float persistance;
+    public float persistence;
     [Min(1)]
     public float lacunarity;
 
@@ -64,7 +64,7 @@ public static class NoiseMap
                 {
                     noiseValue += OpenSimplex2S.Noise2(seed, settings.frequency * pointFrequency * sampleX,
                                                                 settings.frequency * pointFrequency * sampleY) * pointAmplitude;
-                    pointAmplitude *= settings.persistance;
+                    pointAmplitude *= settings.persistence;
                     pointFrequency *= settings.lacunarity;
                 }
 
