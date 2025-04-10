@@ -1,5 +1,5 @@
 # Mesh Generation Demo
-This repository contains a Unity project with two scenes that demonstrate the capabilities of algorithmic 3D mesh generation. It includes source files from [OpenSimplex2](https://github.com/KdotJPG/OpenSimplex2) and [Noisy-Nodes](https://github.com/JimmyCushnie/Noisy-Nodes).
+This repository contains a Unity project with two scenes that demonstrate the capabilities of algorithmic 3D mesh generation. It includes source files from [OpenSimplex2](https://github.com/KdotJPG/OpenSimplex2) and [Noisy-Nodes](https://github.com/JimmyCushnie/Noisy-Nodes) and it's inspired by [Sebastian Lague](https://www.youtube.com/@SebastianLague)'s projects.
 
 ## Fractal noise
 The procedural generation in this project is based on 2 different fractal noise implementations, one based on OpenSimplex2's noise functions and implemented in C# (`NoiseMap.cs`), and another one based on Noisy-Nodes' and implemented in HLSL (`PlanetGeneration.compute`). They both share these parameters: 
